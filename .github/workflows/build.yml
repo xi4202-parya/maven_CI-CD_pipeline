@@ -18,5 +18,5 @@ jobs:
 
       - name: Build and push
         run: |
-          docker image build -t pratishtharya/maven_pipeline:latest .
-          docker push pratishtharya/maven_pipeline:latest
+          docker image build -t pratishthaarya/maven_pipeline:latest .
+          docker push pratishthaarya/maven_pipeline:latest
