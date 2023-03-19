@@ -1,4 +1,4 @@
-FROM maven:3.8.7
+FROM maven:3.8-openjdk-17-slim
 RUN mkdir /my_app
 COPY pom.xml /my_app/pom.xml
 COPY src /my_app/src
