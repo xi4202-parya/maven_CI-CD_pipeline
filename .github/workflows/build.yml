@@ -13,8 +13,8 @@ jobs:
       - name: Login Docker account
         uses: docker/login-action@v2
         with:
-          username: "${{ secrets.DOCKER.NAME }}"
-          password: "${{ secrets.DOCKER.PASSWORD }}"
+          username: "${{ secrets.DOCKER_NAME }}"
+          password: "${{ secrets.DOCKER_PASSWORD }}"
 
       - name: Build and push
         run: |
