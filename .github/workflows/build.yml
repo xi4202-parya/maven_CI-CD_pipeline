@@ -28,9 +28,9 @@ jobs:
           password: "${{ secrets.DOCKER_PASSWORD }}"
       - name: Creating short SHA
         id: id
-        run: echo "{mysha4}"="{$(echo ${GITHUB_SHA} | cut -c1-4)" >> GITHUB_OUTPUT  
+        run: echo "{sha4}"="{$(echo ${GITHUB_SHA} | cut -c1-4)" >> GITHUB_OUTPUT  
 
       - name: Build and push
         run: |
-          docker image build -t pratishthaarya/$mysha4 .
-          docker push pratishthaarya/$mysha4
+          docker image build -t pratishthaarya/sha4 .
+          docker push pratishthaarya/sha4
