@@ -5,8 +5,19 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checking code
+        uses: action/checkout@v3
+      - name: Testing package
+        run: mvn clean package
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      mysha4: ${{ steps.id.outputs.mysha4 }}
     steps:
       - name: Taking files
         uses: actions/checkout@v3
@@ -15,8 +26,11 @@ jobs:
         with:
           username: "${{ secrets.DOCKER_NAME }}"
           password: "${{ secrets.DOCKER_PASSWORD }}"
+      - name: Creating short SHA
+        id: id
+        run: echo "{mysha4}"="{$(echo ${GITHUB_SHA} | cut -c1-4)" >> GITHUB_OUTPUT  
 
       - name: Build and push
         run: |
-          docker image build -t pratishthaarya/maven_pipeline:latest .
-          docker push pratishthaarya/maven_pipeline:latest
+          docker image build -t pratishthaarya/$mysha4 .
+          docker push pratishthaarya/$mysha4
