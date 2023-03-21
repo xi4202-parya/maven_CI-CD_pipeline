@@ -16,8 +16,6 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    outputs:
-      mysha4: ${{ steps.id.outputs.mysha4 }}
     steps:
       - name: Taking files
         uses: actions/checkout@v3
