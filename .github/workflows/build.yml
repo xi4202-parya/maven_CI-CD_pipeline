@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking code
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       - name: Testing package
         run: mvn clean package
 
