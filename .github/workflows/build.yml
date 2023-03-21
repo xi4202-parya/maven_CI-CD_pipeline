@@ -32,5 +32,5 @@ jobs:
 
       - name: Build and push
         run: |
-          docker image build -t pratishthaarya/sha4 .
-          docker push pratishthaarya/sha4
+          docker image build -t pratishthaarya/mavenproject:${{ steps.id.outputs.sha4 }} .
+          docker push pratishthaarya/mavenproject:${{ steps.id.outputs.sha4 }}
