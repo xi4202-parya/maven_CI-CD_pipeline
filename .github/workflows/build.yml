@@ -48,5 +48,7 @@ jobs:
     steps:
       - name: Installing git
         run: |
+          apt-get update
           apt-get install git
+          git --version
           echo "Installed...."   
