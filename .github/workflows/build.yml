@@ -5,8 +5,8 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  SHORT_TAG: ${{ steps.myid.outputs.sha4 }}
+# env:
+#   SHORT_TAG: ${{ steps.myid.outputs.sha4 }}
 
 jobs:
   test:
