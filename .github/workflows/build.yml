@@ -20,6 +20,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    outputs:
+      sha4: ${{ steps.myid.outputs.sha4 }}
     steps:
       - name: Taking files
         uses: actions/checkout@v3
@@ -37,3 +39,14 @@ jobs:
         run: |
           docker image build -t pratishthaarya/mavenproject:${{ steps.myid.outputs.sha4 }} .
           docker push pratishthaarya/mavenproject:${{ steps.myid.outputs.sha4 }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: pratishthaarya/mavenproject:${{ needs.build.outputs.sha4}}
+    steps:
+      - name: Installing git
+        run: |
+          apt-get install git
+          echo "Installed...."   
